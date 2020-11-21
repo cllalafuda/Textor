@@ -109,6 +109,9 @@ celerybeat.pid
 .venv
 env/
 venv/
+venv
+.DS_Store
+.idea
 ENV/
 env.bak/
 venv.bak/
