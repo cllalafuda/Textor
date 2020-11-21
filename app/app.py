@@ -63,6 +63,7 @@ class FavouritesLyricsWidget(QWidget, Ui_Favourites):
     def __init__(self, database):
         super(FavouritesLyricsWidget, self).__init__()
         super(FavouritesLyricsWidget, self).setupUi(self)
+        self.data_storage = None
         self.database = database
         self.mapping = {}
         self.initUI()
@@ -70,13 +71,23 @@ class FavouritesLyricsWidget(QWidget, Ui_Favourites):
     def initUI(self):
         self.setWindowTitle("Favourites")
         self.remove_button.clicked.connect(self.remove_lyrics)
+        self.show_button.clicked.connect(self.show_lyrics)
         self.update_combo_box()
+
+    def show_lyrics(self):
+        header = self.favourite_lyrics_combo_box.currentText()
+        id_unique = int(header.split("~")[-1])
+
+        for id, text in self.data_storage:
+            if id == id_unique:
+                self.textBrowser.setText(text)
 
     def update_combo_box(self):
         self.favourite_lyrics_combo_box.addItems(self._get_headers_for_lyrics())
 
     def _get_headers_for_lyrics(self) -> list:
         data = self.database.get_favourite_lyrics()
+        self.data_storage = data
         headers = []
         for id, text in data:
             header = text[:20] + f"... ~{id}"
@@ -85,9 +96,10 @@ class FavouritesLyricsWidget(QWidget, Ui_Favourites):
 
     def remove_lyrics(self):
         header = self.favourite_lyrics_combo_box.currentText()
-        id = int(header[-1])
-        self.database.delete_lyrics(id)
+        id_unique = int(header.split("~")[-1])
+        self.database.delete_lyrics(id_unique)
         self.favourite_lyrics_combo_box.clear()
+        self.data_storage = self.database.get_favourite_lyrics()
         self.update_combo_box()
 
 

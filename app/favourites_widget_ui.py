@@ -30,6 +30,8 @@ class Ui_Favourites(object):
 "border-radius: 5px;\n"
 "padding-left: 10px;\n"
 "padding-top: 10px;")
+        self.textBrowser.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
+        self.textBrowser.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
         self.textBrowser.setObjectName("textBrowser")
         self.horizontalLayout.addWidget(self.textBrowser)
         self.verticalLayout = QtWidgets.QVBoxLayout()
@@ -55,6 +57,27 @@ class Ui_Favourites(object):
 "}")
         self.favourite_lyrics_combo_box.setObjectName("favourite_lyrics_combo_box")
         self.verticalLayout.addWidget(self.favourite_lyrics_combo_box)
+        self.show_button = QtWidgets.QPushButton(Favourites)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.show_button.sizePolicy().hasHeightForWidth())
+        self.show_button.setSizePolicy(sizePolicy)
+        self.show_button.setMinimumSize(QtCore.QSize(0, 20))
+        self.show_button.setMaximumSize(QtCore.QSize(16777215, 20))
+        self.show_button.setStyleSheet("QPushButton {\n"
+"    background-color: #52a392;\n"
+"    border-radius: 2px;\n"
+"}\n"
+"\n"
+"QPushButton::pressed {\n"
+"    background-color: #418274;\n"
+"}    \n"
+"")
+        self.show_button.setObjectName("show_button")
+        self.verticalLayout.addWidget(self.show_button)
+        spacerItem = QtWidgets.QSpacerItem(20, 6, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        self.verticalLayout.addItem(spacerItem)
         self.remove_button = QtWidgets.QPushButton(Favourites)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
@@ -74,8 +97,8 @@ class Ui_Favourites(object):
 "")
         self.remove_button.setObjectName("remove_button")
         self.verticalLayout.addWidget(self.remove_button)
-        spacerItem = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.verticalLayout.addItem(spacerItem)
+        spacerItem1 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout.addItem(spacerItem1)
         self.horizontalLayout.addLayout(self.verticalLayout)
         self.gridLayout.addLayout(self.horizontalLayout, 0, 0, 1, 1)
 
@@ -86,4 +109,5 @@ class Ui_Favourites(object):
         _translate = QtCore.QCoreApplication.translate
         Favourites.setWindowTitle(_translate("Favourites", "Form"))
         self.label.setText(_translate("Favourites", "Favourite lyrics"))
+        self.show_button.setText(_translate("Favourites", "Show"))
         self.remove_button.setText(_translate("Favourites", "Remove"))
