@@ -27,3 +27,8 @@ class Database:
         data = self.cursor.execute("SELECT data FROM text WHERE name = ?", (name,)).fetchall()
         result = data[0][0]
         return result
+
+    def get_favourite_lyrics(self) -> list:
+        data = self.cursor.execute("SELECT name FROM SavedText;").fetchall()
+        result = [i[0] for i in data]
+        return result
