@@ -57,6 +57,24 @@ class Ui_Generator(object):
         self.selected_templates_list_view.setSelectionMode(QtWidgets.QAbstractItemView.NoSelection)
         self.selected_templates_list_view.setObjectName("selected_templates_list_view")
         self.verticalLayout_2.addWidget(self.selected_templates_list_view)
+        self.show_favourites_button = QtWidgets.QPushButton(Generator)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.show_favourites_button.sizePolicy().hasHeightForWidth())
+        self.show_favourites_button.setSizePolicy(sizePolicy)
+        self.show_favourites_button.setMaximumSize(QtCore.QSize(16777215, 20))
+        self.show_favourites_button.setStyleSheet("QPushButton {\n"
+"    background-color: #f4c561;\n"
+"    border: #395e8c 2px solid;\n"
+"    border-radius: 3px;\n"
+"}\n"
+"\n"
+"QPushButton::pressed {\n"
+"    background-color: #f2b530;\n"
+"}")
+        self.show_favourites_button.setObjectName("show_favourites_button")
+        self.verticalLayout_2.addWidget(self.show_favourites_button)
         self.generate_song_checkbox = QtWidgets.QCheckBox(Generator)
         self.generate_song_checkbox.setObjectName("generate_song_checkbox")
         self.verticalLayout_2.addWidget(self.generate_song_checkbox)
@@ -188,6 +206,7 @@ class Ui_Generator(object):
 "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
 "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
         self.selected_templates_label.setText(_translate("Generator", "Selected templates:"))
+        self.show_favourites_button.setText(_translate("Generator", "Show favourites"))
         self.generate_song_checkbox.setText(_translate("Generator", "Generate song"))
         self.save_results_button.setText(_translate("Generator", "SAVE RESULT"))
         self.generate_button.setText(_translate("Generator", "GENERATE"))

@@ -22,6 +22,7 @@ class Database:
 
     def delete_lyrics(self, id):
         self.cursor.execute("DELETE FROM SavedText WHERE id = ?;", (id, ))
+        self.connection.commit()
 
     def get_data_for_generating(self, name) -> str:
         data = self.cursor.execute("SELECT data FROM text WHERE name = ?", (name,)).fetchall()
@@ -29,6 +30,6 @@ class Database:
         return result
 
     def get_favourite_lyrics(self) -> list:
-        data = self.cursor.execute("SELECT name FROM SavedText;").fetchall()
-        result = [i[0] for i in data]
+        data = self.cursor.execute("SELECT id, name FROM SavedText;").fetchall()
+        result = [[i[0], i[1]] for i in data]
         return result
