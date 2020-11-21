@@ -1,6 +1,5 @@
 import sys
 
-from PyQt5 import uic
 from PyQt5.QtWidgets import QApplication, QWidget
 from app.ui import Ui_Generator
 from app.favourites_widget_ui import Ui_Favourites
