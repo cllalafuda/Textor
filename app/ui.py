@@ -30,7 +30,10 @@ class Ui_Generator(object):
         font.setPointSize(17)
         self.text_browser.setFont(font)
         self.text_browser.setStyleSheet("background-color: #ebaaa3;\n"
-"border-radius: 5px;")
+"border-radius: 5px;\n"
+"padding-left: 10px;\n"
+"padding-top: 10px;")
+        self.text_browser.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
         self.text_browser.setObjectName("text_browser")
         self.horizontalLayout.addWidget(self.text_browser)
         self.gridLayout = QtWidgets.QGridLayout()
@@ -43,18 +46,15 @@ class Ui_Generator(object):
         self.selected_templates_label.setAlignment(QtCore.Qt.AlignCenter)
         self.selected_templates_label.setObjectName("selected_templates_label")
         self.verticalLayout_2.addWidget(self.selected_templates_label)
-        self.selected_templates_list_view = QtWidgets.QListView(Generator)
+        self.selected_templates_list_view = QtWidgets.QListWidget(Generator)
         self.selected_templates_list_view.setEnabled(False)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.selected_templates_list_view.sizePolicy().hasHeightForWidth())
-        self.selected_templates_list_view.setSizePolicy(sizePolicy)
-        self.selected_templates_list_view.setMaximumSize(QtCore.QSize(16777215, 250))
+        self.selected_templates_list_view.setMaximumSize(QtCore.QSize(16777215, 200))
         self.selected_templates_list_view.setStyleSheet("background-color: #eacabf;\n"
 "border: 2px solid #d18b73;\n"
 "border-radius: 5px;\n"
+"color: black;\n"
 "")
+        self.selected_templates_list_view.setSelectionMode(QtWidgets.QAbstractItemView.NoSelection)
         self.selected_templates_list_view.setObjectName("selected_templates_list_view")
         self.verticalLayout_2.addWidget(self.selected_templates_list_view)
         self.generate_song_checkbox = QtWidgets.QCheckBox(Generator)
@@ -135,8 +135,6 @@ class Ui_Generator(object):
 "    border: 0px;\n"
 "}")
         self.templates_combo_box.setObjectName("templates_combo_box")
-        self.templates_combo_box.addItem("")
-        self.templates_combo_box.addItem("")
         self.verticalLayout_4.addWidget(self.templates_combo_box)
         self.horizontalLayout_4 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_4.setObjectName("horizontalLayout_4")
@@ -187,13 +185,12 @@ class Ui_Generator(object):
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'Ubuntu Mono\'; font-size:17pt; font-weight:400; font-style:normal;\">\n"
+"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
 "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
         self.selected_templates_label.setText(_translate("Generator", "Selected templates:"))
         self.generate_song_checkbox.setText(_translate("Generator", "Generate song"))
         self.save_results_button.setText(_translate("Generator", "SAVE RESULT"))
         self.generate_button.setText(_translate("Generator", "GENERATE"))
         self.templates_label.setText(_translate("Generator", "Templates"))
-        self.templates_combo_box.setItemText(0, _translate("Generator", "GrOb"))
-        self.templates_combo_box.setItemText(1, _translate("Generator", "Jumoreski"))
         self.add_template_button.setText(_translate("Generator", "+"))
         self.remove_template_button.setText(_translate("Generator", "-"))

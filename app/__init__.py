@@ -1,1 +1,1 @@
-from .generator import generate_lyrics
+from .app import run
